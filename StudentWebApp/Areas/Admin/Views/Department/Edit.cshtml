@@ -1,0 +1,72 @@
+﻿ 
+@model StudentWebApp.Models.Models.DepartmentViewModel  
+<h1>Edit Department</h1>
+
+
+@if (Model is null)
+{
+    <p>No student found with this Id</p>
+}
+
+else
+{
+
+    <form method="post" enctype="multipart/form-data">
+
+        <input asp-for="@Model.Department.DepartmentId" hidden />
+
+        <div class="form-floating py-2 col-12">
+            <label asp-for="Department.DepartmentName" class="form-label"></label>
+            <input asp-for="Department.DepartmentName" class="form-control" style="width: 300px;" />
+            <span asp-validation-for="Department.DepartmentName" class="text-danger"></span>
+        </div>
+        <div class="form-floating py-2 col-12">
+            <label asp-for="Department.Description" class="form-label"></label>
+            <input asp-for="Department.Description" class="form-control" style="width: 300px;" />
+            <span asp-validation-for="Department.Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating py-2 col-12">
+            <label asp-for="Department.HOD" class="form-label"></label>
+            <input asp-for="Department.HOD" class="form-control" style="width: 300px;" />
+            <span asp-validation-for="Department.HOD" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating py-2 col-12">
+            <label asp-for="Department.DepartmentBlock" class="form-label"></label>
+            <input asp-for="Department.DepartmentBlock" class="form-control" style="width: 300px;" />
+            <span asp-validation-for="Department.DepartmentBlock" class="text-danger"></span>
+        </div>
+        <div class="py-2 col-12">
+            <label asp-for="Department.StudentId" class="ms-2"></label>
+            <select asp-for="@Model.Department.StudentId" asp-items="@Model.StudentList" class="form-label">
+                <option disabled selected>---Selected Student---</option>
+            </select>
+            <span asp-validation-for="Department.StudentId" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating py-2 col-12">
+            <label asp-for="Department.ImageUrl" class="form-label"></label>
+            <input type="file" name="file" class="form-control" style="width: 300px;" />
+            <span asp-validation-for="Department.ImageUrl" class="text-danger"></span>
+        </div>
+
+          <img src="@Model.Department.ImageUrl" width="90%" style="border-radius:5px; border:1px solid #bbb9b9"/>
+
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-danger"asp-area="Admin" asp-action="Delete" asp-controller="Department">Delete</button>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-primary" asp-controller="Department" asp-action="Add">Back</a>
+                </div>
+            </div>
+        </div>
+   
+</form>
+
+}

@@ -1,0 +1,42 @@
+﻿
+@model List<StudentWebApp.Models.Models.Department>
+   @*  <partial name="_Notifications" /> *@
+<h1>All Departments</h1>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+           @*  <th>DepartmentId</th> *@
+            <th>DepartmentName</th>
+            <th>Description</th>
+            <th>HOD</th>
+            <th>DepartmentBlock</th>
+            <th>Student</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var DepartmentList in Model)
+        {
+            <tr>
+               @*  <td>@DepartmentList.DepartmentId</td> *@
+                <td>@DepartmentList.DepartmentName</td>
+                <td>@DepartmentList.Description</td>
+                <td>@DepartmentList.HOD</td>
+                <td>@DepartmentList.DepartmentBlock</td>
+                <td>@DepartmentList.Student.Name</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Department" asp-action="Edit" asp-route-id="@DepartmentList.DepartmentId">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary"  asp-area="Admin" asp-controller="Department" asp-action="Add">Back</a>
+                </td>
+                
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
